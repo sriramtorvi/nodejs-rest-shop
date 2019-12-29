@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 
 const productRoutes = require('./api/routes/products');
 const ordersRoutes = require('./api/routes/orders');
+const userRoutes = require('./api/routes/user');
 
 mongoose.connect('mongodb+srv://nodejs-rest:'+ process.env.MONGO_ATLAS_PW +'@nodejs-rest-m9rek.mongodb.net/test?retryWrites=true&w=majority', { 
     useNewUrlParser: true, 
@@ -26,6 +27,7 @@ app.use((req,res,next) => {
     next();
 });
 
+app.use('/user', userRoutes);
 app.use('/products',productRoutes);
 app.use('/orders',ordersRoutes);
 
